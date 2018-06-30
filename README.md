@@ -5,7 +5,7 @@ hl - highlights anything that matches your REGEX, in the COLOUR desired - cuz so
 
 * **Chris Phillips** - *Initial work* - [furriephillips](https://github.com/furriephillips)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/furriephillips/hl/contributors) who participated in this project.
 
 ## License
 
