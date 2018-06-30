@@ -13,7 +13,8 @@ This project is licensed under The Artistic License 2.0 - see the [LICENSE](LICE
 
 ## Help Usage
 
+![hl help usage](hl_help_usage.png)
 
 ## Real example, highlighting spammers in a maillog
 
-
+![usage example](hl_usage_example.png)
