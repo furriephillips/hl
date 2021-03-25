@@ -1,0 +1,67 @@
+#!/bin/sh
+## hl - highlights anything that matches your REGEX in the COLOUR desired
+
+## Usage
+if [ $# -lt 1 ]; then
+  echo ""
+  echo "You have to at least define the pattern you want to be highlighted"
+  echo " and optionally, a colour for the highlighting."
+  echo ""
+  echo "[1;31mUsage: [1;33mhl <PATTERN> [HLCOLOUR][0m"
+  echo ""
+  echo "Currently supported colours: -"
+  echo ""
+  echo " [1;31mred[0m (default if none specified)"
+  echo " [1;32mgreen[0m"
+  echo " [1;33myellow[0m"
+  echo " [1;34mblue[0m"
+  echo " [1;35mpink[0m"
+  echo " [1;36mlightblue[0m"
+  echo " [1;38mgrey[0m"
+  echo ""
+  echo "The colours are subject to interpretation!"
+  echo ""
+  echo "You can string a few 'hl' commands together, in order to highlight"
+  echo " various elements...  Like this: -"
+  echo ""
+  echo "# tail -F /var/log/maillog | hl NOQUEUE lightblue | hl 'blocked using zen' pink | hl warning yellow"
+  echo ""
+  exit 127
+fi
+
+## Pattern
+PAT=$1;
+
+## Default Colour
+HLC="[0;31m";
+## Specific Colours
+if [ $# -gt 1 ]; then
+  HL=$2;
+  if [ ${HL} = "red" ]; then
+    HLC="[0;31m";
+  fi
+  if [ ${HL} = "green" ]; then
+    HLC="[0;32m";
+  fi
+  if [ ${HL} = "yellow" ]; then
+    HLC="[0;33m";
+  fi
+  if [ ${HL} = "blue" ]; then
+    HLC="[0;34m";
+  fi
+  if [ ${HL} = "pink" ]; then
+    HLC="[0;35m";
+  fi
+  if [ ${HL} = "lightblue" ]; then
+    HLC="[0;36m";
+  fi
+  if [ ${HL} = "grey" ]; then
+    HLC="[0;38m";
+  fi
+fi 
+
+## Transform the pattern into a coloured pattern
+/bin/sed -u -e "s/${PAT}/${HLC}${PAT}[0m/g"
+
+exit 0
+#EOF
